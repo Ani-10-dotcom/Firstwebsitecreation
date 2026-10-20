@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · Document Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Passphrase gate -->
+  <section class="login" id="login">
+    <h1>Admin sign-in</h1>
+    <p class="note">Enter the admin passphrase to manage documents.</p>
+    <form id="login-form">
+      <input type="password" id="passphrase" placeholder="Passphrase" autocomplete="current-password" required />
+      <button class="btn primary" type="submit">Sign in</button>
+      <div class="error" id="login-error"></div>
+    </form>
+    <p><a href="index.html">Go to the chat</a></p>
+  </section>
+
+  <main class="admin" id="admin" hidden>
+    <header>
+      <h1>Document admin</h1>
+      <nav>
+        <a class="btn" href="index.html">Open chat</a>
+        <button class="btn" id="logout">Sign out</button>
+      </nav>
+    </header>
+
+    <section class="card">
+      <h2>Upload documents</h2>
+      <p>PDF, Word (.docx), Excel, CSV, PowerPoint (.pptx), OpenDocument, HTML, Markdown, text, code and images (read with OCR). Text is extracted and indexed in this browser.</p>
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="file-input" multiple hidden />
+        <strong>Drop files here</strong> or click to choose
+      </label>
+      <div class="queue" id="queue"></div>
+    </section>
+
+    <section class="card">
+      <h2>Knowledge base</h2>
+      <p id="kb-summary">Loading…</p>
+      <table class="doc-table">
+        <thead>
+          <tr><th>Document</th><th class="hide-sm">Added</th><th class="hide-sm">Size</th><th>Chunks</th><th></th></tr>
+        </thead>
+        <tbody id="doc-rows"></tbody>
+      </table>
+      <div class="preview" id="preview" hidden></div>
+      <div class="toolbar">
+        <button class="btn" id="export">Export knowledge base</button>
+        <label class="btn">Import<input type="file" id="import" accept=".json,application/json" hidden /></label>
+        <button class="btn danger" id="clear">Delete all</button>
+      </div>
+      <p class="note" style="margin-top:12px;font-size:13px;color:var(--muted)">
+        Documents are stored in this browser. To make them available to every visitor of the site,
+        export the knowledge base and save the file as <code>rag/data/knowledge-base.json</code> in the repository.
+      </p>
+    </section>
+
+    <section class="card search-test">
+      <h2>Test retrieval</h2>
+      <p>Type a question to see which passages would be sent to the LLM.</p>
+      <form id="search-form">
+        <input id="search-input" placeholder="e.g. What is the refund policy?" />
+        <button class="btn primary" type="submit">Search</button>
+      </form>
+      <div id="search-results"></div>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/parsers.js"></script>
+  <script src="js/rag.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "firstwebsitecreation",
+  "private": true,
+  "type": "module",
+  "description": "Static site plus the serverless LLM endpoint for the document chatbot in rag/.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0"
+  }
+}

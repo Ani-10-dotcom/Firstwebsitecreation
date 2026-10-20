@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-app">
+    <aside class="sidebar" id="sidebar">
+      <button class="new-chat" id="new-chat">＋ New chat</button>
+      <h2>Chats</h2>
+      <div class="conversations" id="conversations"></div>
+      <div class="sidebar-footer">
+        <div id="kb-status">Loading documents…</div>
+        <a href="admin.html">Admin</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <button class="menu" id="menu" aria-label="Show chats">☰</button>
+        Document Assistant
+        <span class="status" id="llm-status"></span>
+      </div>
+
+      <div class="messages" id="messages">
+        <div class="messages-inner" id="thread"></div>
+      </div>
+
+      <div class="composer">
+        <form id="composer">
+          <textarea id="input" rows="1" placeholder="Ask a question about the documents…" autofocus></textarea>
+          <button class="send" id="send" type="submit" aria-label="Send" disabled>↑</button>
+        </form>
+        <div class="hint">Answers come from the uploaded documents. Check important details against the sources.</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/rag.js"></script>
+  <script src="js/llm.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
